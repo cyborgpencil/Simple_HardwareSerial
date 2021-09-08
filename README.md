@@ -1,1 +1,1 @@
-# Simple Inventory Info
+# Instructions
