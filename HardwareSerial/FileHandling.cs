@@ -10,9 +10,11 @@ namespace HardwareSerial
 {
     public class FileHandling
     {
-        public List<string> HostNames { get; set; }
-        private string _excelFilename = @"Hardware Inventory.xlsx";
         private string _directory = "Info";
+        private string _excelFilename = "Hardware Inventory.xlsx";
+        private string _hostNamesFile = "hostnames.txt";
+
+        public List<string> HostNames { get; set; }
         public string FullFilePath { get; set; }
         private FileInfo ExcelFile { get; set; }
         ExcelWorksheet excelWorksheet { get; set; }
@@ -22,18 +24,30 @@ namespace HardwareSerial
         {
             InitialExcelFileCreateAndSave();
 
-            
-            
             //ExcelFile = new FileInfo($"{_directory} // { _excelFilename } ");
+        }
+
+        private void FileCreation(string filename)
+        {
+            FileInfo file = new FileInfo(filename);
+
+            if (!file.Exists)
+            {
+                file.Create();
+            }
         }
 
         private void InitialExcelFileCreateAndSave()
         {
+            // Always create Info Directory first
             DirectoryInfo dir = new DirectoryInfo(_directory);
             if (!dir.Exists)
             {
                 dir.Create();
             }
+
+            // Create Hostnames Text File
+            FileCreation($"{dir.Name}//{_hostNamesFile}");
 
 
             // create F
@@ -76,11 +90,19 @@ namespace HardwareSerial
 
         public void ReadHostNamesFromTextFile()
         {
-            HostNames = new List<string>();
-            string[] lines = File.ReadAllLines(@"C:\hostnames\hostnames.txt");
-            foreach (string line in lines)
+            try
             {
-               HostNames.Add(line);
+                HostNames = new List<string>();
+
+                string[] lines = File.ReadAllLines(@"C:\hostnames\hostnames.txt");
+                foreach (string line in lines)
+                {
+                    HostNames.Add(line);
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
