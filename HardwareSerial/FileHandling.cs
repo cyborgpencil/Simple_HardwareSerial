@@ -11,7 +11,9 @@ namespace HardwareSerial
     public class FileHandling
     {
         public List<string> HostNames { get; set; }
-        private string filename = @"Hardware Inventory.xlsx";
+        private string _excelFilename = @"Hardware Inventory.xlsx";
+        private string _directory = "Info";
+        public string FullFilePath { get; set; }
         private FileInfo ExcelFile { get; set; }
         ExcelWorksheet excelWorksheet { get; set; }
         ExcelPackage excel { get; set; }
@@ -20,17 +22,27 @@ namespace HardwareSerial
         {
             InitialExcelFileCreateAndSave();
 
-            ExcelFile = new FileInfo(filename);
+            
+            
+            //ExcelFile = new FileInfo($"{_directory} // { _excelFilename } ");
         }
 
         private void InitialExcelFileCreateAndSave()
         {
+            DirectoryInfo dir = new DirectoryInfo(_directory);
+            if (!dir.Exists)
+            {
+                dir.Create();
+            }
+
+
+            // create F
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             excel = new ExcelPackage();
             excel.Workbook.Worksheets.Add("Worksheet1");
             excelWorksheet = excel.Workbook.Worksheets["Worksheet1"];
 
-            ExcelFile = new FileInfo(@"Hardware Inventory.xlsx");
+            ExcelFile = new FileInfo($"{_directory}//{ _excelFilename }");
 
             List<string[]> headerRow = new List<string[]>()
                 {

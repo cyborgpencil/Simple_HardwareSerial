@@ -11,11 +11,11 @@ FileHandling fh = new FileHandling();
 
 
 fh.ReadHostNamesFromTextFile();
-GetHardwareHostname();
-GetHardwareSerial();
+//GetHardwareHostname();
+//GetHardwareSerial();
 
 
-fh.AddListToWorksheet(hardwareModel);
+//fh.AddListToWorksheet(hardwareModel);
 
 void GetHardwareHostname()
 {
