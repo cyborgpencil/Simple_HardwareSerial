@@ -24,7 +24,7 @@ namespace HardwareSerial
         {
             InitialExcelFileCreateAndSave();
 
-            //ExcelFile = new FileInfo($"{_directory} // { _excelFilename } ");
+            ExcelFile = new FileInfo($"{_directory}//{ _excelFilename } ");
         }
 
         private void FileCreation(string filename)
@@ -94,7 +94,7 @@ namespace HardwareSerial
             {
                 HostNames = new List<string>();
 
-                string[] lines = File.ReadAllLines(@"C:\hostnames\hostnames.txt");
+                string[] lines = File.ReadAllLines($"{_directory}//{_hostNamesFile}");
                 foreach (string line in lines)
                 {
                     HostNames.Add(line);

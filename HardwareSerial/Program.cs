@@ -11,16 +11,16 @@ FileHandling fh = new FileHandling();
 
 
 fh.ReadHostNamesFromTextFile();
-//GetHardwareHostname();
-//GetHardwareSerial();
+GetHardwareHostname();
+GetHardwareSerial();
 
 
-//fh.AddListToWorksheet(hardwareModel);
+fh.AddListToWorksheet(hardwareModel);
 
 void GetHardwareHostname()
 {
     // HardwareModel Count based on the number of hostnames
-    //hardwareModel = new List<HardwareModel>(fh.HostNames.Count);
+    hardwareModel = new List<HardwareModel>(fh.HostNames.Count);
 
     //Get the Hostnames
     foreach (var item in fh.HostNames)

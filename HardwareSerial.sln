@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HardwareSerial", "HardwareS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{68646A8C-A7B0-49AE-8164-E54E461B9E5E}"
 	ProjectSection(SolutionItems) = preProject
+		HardwareSerial\bin\Debug\net6.0\Info\hostnames.txt = HardwareSerial\bin\Debug\net6.0\Info\hostnames.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
